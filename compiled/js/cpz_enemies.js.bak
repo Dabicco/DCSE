@@ -1,4 +1,6 @@
-// Dabicco's Classic Sonic Engine - CPZ Enemies Beta (THIS FILE IS OBSELETE NOW)
+// Dabicco's Classic Sonic Engine - CPZ Enemies (Sonic 2 RSDK)
+
+// CPZ Enemy Sprite Sheet loader
 const CPZEnemySprites = {
     sheets: {},
     loaded: false,
@@ -49,6 +51,11 @@ const CPZEnemySprites = {
 
 // Initialize CPZ enemy sprites
 CPZEnemySprites.load();
+
+// ============================================================
+// Spiny (Floor) - Walks along floor, shoots spikes when player is near
+// RSDK type 56, subtype determines behavior variant
+// ============================================================
 class Spiny extends GameObject {
     constructor(x, y, subtype) {
         super(x, y, OBJECT_TYPES.SPINY);
@@ -180,6 +187,11 @@ class Spiny extends GameObject {
         }
     }
 }
+
+// ============================================================
+// Spiny Wall - Climbs up/down walls, shoots when player nearby
+// RSDK type 57
+// ============================================================
 class SpinyWall extends GameObject {
     constructor(x, y, subtype) {
         super(x, y, OBJECT_TYPES.SPINY_WALL);
@@ -268,6 +280,11 @@ class SpinyWall extends GameObject {
         }
     }
 }
+
+// ============================================================
+// Grabber - Hangs from ceiling, descends to grab player
+// RSDK type 59 (object list index 24 = global 35 + stage 24)
+// ============================================================
 class Grabber extends GameObject {
     constructor(x, y) {
         super(x, y, OBJECT_TYPES.GRABBER);
@@ -397,6 +414,11 @@ class Grabber extends GameObject {
         }
     }
 }
+
+// ============================================================
+// Bubbler - Floats around in water/chemical areas, spawns bubbles
+// RSDK type 61 (Bubblers Mother) + type 62 (Bubbler child)
+// ============================================================
 class Bubbler extends GameObject {
     constructor(x, y) {
         super(x, y, OBJECT_TYPES.BUBBLER);
@@ -488,6 +510,10 @@ class Bubbler extends GameObject {
         }
     }
 }
+
+// ============================================================
+// RSDK Object Spawner - Creates engine objects from RSDK object data
+// ============================================================
 const RSDKObjectSpawner = {
     // RSDK object type → engine object type mapping
     // Global objects (0-34)
